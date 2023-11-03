@@ -1,6 +1,7 @@
 # Whaling_docker
 
-![image](https://github.com/binhao22/Whaling_docker/assets/73528043/24a13920-8a8e-4258-95c3-86a0496963bf)  ![image](https://github.com/binhao22/Whaling_docker/assets/73528043/89d0ce26-eda5-4ef6-b81f-0e18a4b58c21)
+![image](https://github.com/binhao22/Whaling_docker/assets/73528043/24a13920-8a8e-4258-95c3-86a0496963bf)  ![뜰채](https://github.com/binhao22/Whaling_docker/assets/73528043/bf5651fb-757d-4e90-b02b-2e0d8f78523d)
+
 
 
 
