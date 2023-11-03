@@ -1,6 +1,7 @@
 # Whaling_docker
 
-![image](https://github.com/binhao22/Whaling_docker/assets/73528043/24a13920-8a8e-4258-95c3-86a0496963bf)
+![image](https://github.com/binhao22/Whaling_docker/assets/73528043/24a13920-8a8e-4258-95c3-86a0496963bf)  ![image](https://github.com/binhao22/Whaling_docker/assets/73528043/30f79429-d2bc-47d1-98df-c589c4444669)
+
 
 
 뜻밖의 정보 : **Docker API == Docker CLI**
