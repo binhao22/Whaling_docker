@@ -27,11 +27,13 @@
 - WAS (Node - Express)
 : 특정 컨테이너의 PID 정보 토스
 
+
 → I am 사용자친화적인 GUI 환경에서 컨테이너 관리 가능
 
 → Kill 횟수 집계를 통해 실습에 대한 노오력 증명 가능
 
 → 최종적으로 애플리케이션을 도커 이미지로 빌드해서 **도커허브 or 사설저장소** 업로드
+
 
 
 [Docker가 REST API를 이용함을 확인해보자](https://senticoding.tistory.com/95)
