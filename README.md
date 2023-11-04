@@ -6,7 +6,6 @@
 뜻밖의 정보 : **Docker API == Docker CLI**
 
 [Engine API v1.24](https://docs.docker.com/engine/api/v1.24/)
-&nbsp; 
 
 - List containers → JSON 리턴
     
