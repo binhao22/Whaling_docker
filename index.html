@@ -4,6 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whaling_docker Project</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }        
+        strong {
+            font-weight: bold;
+        }
+        .attribute {
+            display: flex;
+            align-items: center;
+        }
+        .attribute-key {
+            font-weight: bold;
+            margin-right: 5px; /* 키와 값 사이의 간격을 추가 */
+        }
+    </style>
+</head>
+<body>
+    <h1>I am 도커 Container 입니다</h1>
+    <ul id="container-list"></ul>
+    <!-- <script type="text/javascript" src="/main.js"></script> -->
+    <script>
+        // 컨테이너 리스트 조회
+        async function fetchContainerList() {
+            const containerListElement = document.getElementById('container-list');
+            try {
+            const response = await fetch('/containers');
+            const data = await response.json();
+            if (data) {
+                data.forEach((container) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<div class="attribute"><span class="attribute-key">Name:</span> ${container.Names[0]}</div> <div class="attribute"><span class="attribute-key">Ports:</span> ${Object.values(container.Ports[0])}</div><div class="attribute"><span class="attribute-key">Image:</span> ${container.Image}</div> <div class="attribute"><span class="attribute-key">State:</span> ${container.State}</div> <div class="attribute"><span class="attribute-key">Status:</span> ${container.Status}</div>`;
+                // Delete 버튼 생성
+                const button = document.createElement('button');
+                button.textContent = 'Delete';
+                button.addEventListener('click', async () => {
+                    const success = await deleteContainer(container.Id);
+                    if (success) {
+                        alert(`Container ${container.Id} deleted successfully.`);
+                        fetchContainerList();
+                        location.reload(); // 삭제 성공 -> 목록 업데이트
+                    }
+                });
+                listItem.appendChild(button);
+                containerListElement.appendChild(listItem);
+                });
+            } else {
+                console.error('Failed to retrieve container list.');
+                }
+            } catch (error) {
+            console.error('An error occurred:', error);
+            }
+        }
+    
+        async function deleteContainer(containerId) {
+            try {
+            const response = await fetch('/containers/delete', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ containerId }),
+            });
+    
+            const data = await response.json();
+            if (data.message) {
+                console.log(data.message);
+                return true;
+            } else if (data.error) {
+                console.error(data.error);
+            }
+            } catch (error) {
+            console.error('An error occurred:', error);
+            }
+            return false;
+        }
+    
+        fetchContainerList();
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whaling_docker Project</title>
 </head>
 <body>
     Hello, Docker !!
@@ -13,4 +122,4 @@
         <button type="submit">Go</button>
     </form>
 </body>
-</html>
+</html> -->
