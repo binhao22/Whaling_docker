@@ -1,4 +1,5 @@
 # Whaling_docker
+# 도커꺼줘 (고래잡이)
 
 ![image](https://github.com/binhao22/Whaling_docker/assets/73528043/24a13920-8a8e-4258-95c3-86a0496963bf)  ![뜰채](https://github.com/binhao22/Whaling_docker/assets/73528043/bf5651fb-757d-4e90-b02b-2e0d8f78523d)
 &nbsp; 
@@ -6,7 +7,6 @@
 뜻밖의 정보 : **Docker API == Docker CLI**
 
 [Engine API v1.24](https://docs.docker.com/engine/api/v1.24/)
-&nbsp; 
 
 - List containers → JSON 리턴
     
@@ -15,7 +15,7 @@
 - Kill containers → JSON 리턴
     
     `POST /v1.24/containers/e90e34656806/kill HTTP/1.1`
-    
+    </br>
 
 - WEB (React - Bootstrap) </br>
 : List 버튼 (뜰채) 구현 - List containers API 연동 </br>
