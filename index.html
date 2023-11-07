@@ -64,7 +64,7 @@
                 data.forEach(async (container) => {
                     const listItem = document.createElement('li');
                     const cpuMemoryInfo = await fetchContainerStats(container.Id);
-                    listItem.innerHTML = `<div class="attribute"><span class="attribute-key">Name:</span> ${container.Names[0].substring(1)}</div> <div class="attribute"><span class="attribute-key">Image:</span> ${container.Image}</div> <div class="attribute"><span class="attribute-key">State:</span> ${container.State}</div> <div class="attribute"><span class="attribute-key">Status:</span> ${container.Status}</div> <div class="attribute"><span class="attribute-key">CPU Usage:</span> ${cpuMemoryInfo.cpuUsageTotal}</div> <div class="attribute"><span class="attribute-key">Memory Usage:</span> ${cpuMemoryInfo.memoryUsage}</div>`;
+                    listItem.innerHTML = `<div class="attribute"><span class="attribute-key">Name:</span> ${container.Names[0].substring(1)}</div> <div class="attribute"><span class="attribute-key">Image:</span> ${container.Image}</div> <div class="attribute"><span class="attribute-key">State:</span> ${container.State}</div> <div class="attribute"><span class="attribute-key">Status:</span> ${container.Status}</div> <div class="attribute"><span class="attribute-key">CPU Usage:</span> ${cpuMemoryInfo.cpuUsagePer} %</div>`;
                     // Delete 버튼 생성
                     const button = document.createElement('button');
                     button.textContent = '꺼줘';
@@ -97,8 +97,12 @@
 
                 if (response.status === 200) {
                     const cpuUsageTotal = stat_data.cpu_stats.cpu_usage.total_usage;
-                    const memoryUsage = stat_data.memory_stats.usage;
-                    return { cpuUsageTotal, memoryUsage };
+                    <!-- const memoryUsageTotal = stat_data.memory_stats.usage; -->
+                    const cpuUsageLimit = stat_data.cpu_stats.system_cpu_usage;
+                    <!-- const memoryUsageLimit = stat_data.memory_stats.stats.hierarchical_memory_limit; -->
+                    const cpuUsagePer = (cpuUsageTotal / cpuUsageLimit * 100).toFixed(7);
+                    <!-- const memoryUsagePer = (memoryUsageTotal / memoryUsageLimit * 100).toFixed(7); -->
+                    return { cpuUsagePer};
                 } else {
                     console.error('Failed to fetch container stats');
                 }
