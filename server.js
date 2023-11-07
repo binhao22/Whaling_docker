@@ -2,6 +2,7 @@ const express = require('express')
 const axios = require('axios');
 const app = express()
 app.use(express.json());
+app.use(express.static('public'))
 
 app.listen(8080, () => {
     console.log('http://localhost:8080 에서 서버 실행중')
@@ -57,6 +58,7 @@ app.post('/containers/delete', async (req, res) => {
   }
 });
 
+// 컨테이너 CPU 사용량 조회
 app.get('/containers/:containerId/stat', async (req, res) => {
     const containerId = req.params.containerId;
     try {
@@ -75,36 +77,3 @@ app.get('/containers/:containerId/stat', async (req, res) => {
         res.status(500).json({ error: 'An error occurred' });
     }
 });
-
-
-
-
-
-
-// const https = require('https')
-// app.use(bodyParser.urlencoded({extended: true}))
-
-// 바이낸스 BTCBUSD 가격 정보 조회
-// app.get('/', (req, res) => {
-//   btcPriceURL = "https://api1.binance.com/api/v3/ticker/price?symbol=BTCBUSD"
-//   https.get(btcPriceURL, function(btcRes) {
-//     btcRes.on("data", function(data) {
-//       const btcPrice = JSON.parse(data)
-//       res.send(btcPrice)
-//     })
-//   })})
-
-// 바이낸스 요청된 가격 정보 조회
-// app.post("/", function(req, res) {
-//   const coinPair = req.body.coinPair
-//   const url = "https://api1.binance.com/api/v3/ticker/price?symbol=" + coinPair
-//   https.get(url, function(resData) {
-//     resData.on("data", function(data){
-//       const coinData = JSON.parse(data)
-//       const symbol = coinData.symbol
-//       const price = coinData.price
-//       res.write("<h1>"+symbol+"</h1>")
-//       res.write("<p>"+price+"</p>")
-//       res.send()
-//     })
-//   })})

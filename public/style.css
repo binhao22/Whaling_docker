@@ -1,0 +1,78 @@
+h1 {
+    color: red;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    border: 2px solid #ccc;
+    margin: 5px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}        
+strong {
+    font-weight: bold;
+}
+.attribute {
+    display: flex;
+    align-items: center;
+}
+.attribute-key {
+    font-weight: bold;
+    margin-right: 5px; /* 키와 값 사이의 간격을 추가 */
+}
+.bluepoint {
+    color: blue;
+}
+.blackpoint {
+    color: black;
+}
+.hover-text {
+    display: none;
+}
+#list-button {
+    background-image: url('/fishing.jpg');
+    width: 150px;
+    height: 150px;
+    border: 3px solid #92d526;
+    border-radius: 10px;
+}
+#list-button:hover .hover-text {
+    display: inline;
+    color: #ff0000;
+    border-radius: 10px;
+    padding: 15px 15px;
+    font-size: 20px;
+    background-color: #e88e8e;            
+}
+#right_gif {
+    position: absolute;
+    left: 1050px; /* 오른쪽으로 100px 이동 */
+    top: 30px;
+    height: 44vh;
+}
+#left_gif {
+    position: absolute;
+    left: 40px; /* 오른쪽으로 100px 이동 */
+    top: 70px;
+    height: 30vh;
+    border-radius: 20px;
+}
+.con1 {
+    text-align: center; /* 수평 가운데 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* 화면 높이의 100%만큼 중앙에 배치 */
+}

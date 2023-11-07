@@ -4,156 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whaling_docker Project</title>
-    <!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
-    <style>
-        h1 {
-            color: red;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            border: 1px solid #ccc;
-            margin: 5px 0;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        button {
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-        }        
-        strong {
-            font-weight: bold;
-        }
-        .attribute {
-            display: flex;
-            align-items: center;
-        }
-        .attribute-key {
-            font-weight: bold;
-            margin-right: 5px; /* 키와 값 사이의 간격을 추가 */
-        }
-        .bluepoint {
-            color: blue;
-        }
-        .blackpoint {
-            color: black;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-    <h1>I am <span class="bluepoint">도커</span> Container <span class="blackpoint">입니다</span></h1>
-    <h3>고래 잡은 횟수: <span id="deleted-container-count">0</span></h3>
+    <div class="con1">
+        <h1>I am <span class="bluepoint">도커</span> Container <span class="blackpoint">입니다</span></h1>
+        <h3>오늘 고래 잡은 횟수: <span id="deleted-container-count">0</span></h3>
+        <button id="list-button">
+            <span class="hover-text">Whaling</span>
+        </button>
+    </div>
+    <img id="right_gif" src="/swarm.gif">
+    <img id="left_gif" src="/docker_go.gif">
     <ul id="container-list"></ul>
-    <!-- <script type="text/javascript" src="/main.js"></script> -->
-    <script>
-        let deletedContainerCount = localStorage.getItem('deletedContainerCount')
-        // 컨테이너 리스트 조회
-        async function fetchContainerList() {
-            const containerListElement = document.getElementById('container-list');
-            try {
-            const response = await fetch('/containers');
-            const data = await response.json();
-            if (data) {
-                data.forEach(async (container) => {
-                    const listItem = document.createElement('li');
-                    const cpuMemoryInfo = await fetchContainerStats(container.Id);
-                    listItem.innerHTML = `<div class="attribute"><span class="attribute-key">Name:</span> ${container.Names[0].substring(1)}</div> <div class="attribute"><span class="attribute-key">Image:</span> ${container.Image}</div> <div class="attribute"><span class="attribute-key">State:</span> ${container.State}</div> <div class="attribute"><span class="attribute-key">Status:</span> ${container.Status}</div> <div class="attribute"><span class="attribute-key">CPU Usage:</span> ${cpuMemoryInfo.cpuUsagePer} %</div>`;
-                    // Delete 버튼 생성
-                    const button = document.createElement('button');
-                    button.textContent = '꺼줘';
-                    button.addEventListener('click', async () => {
-                        const confirmDelete = confirm('고래를 잡으시겠습니까 ??');
-                        if (confirmDelete) {
-                            const success = await deleteContainer(container.Id);
-                            deletedContainerCount++; // 컨테이너가 삭제되면 카운트
-                            localStorage.setItem('deletedContainerCount', deletedContainerCount);
-                            document.getElementById('deleted-container-count').textContent = deletedContainerCount; 
-                            alert(`Container ${container.Names[0].substring(1)} deleted successfully !!`);
-                            location.reload(); // 삭제 성공 -> 목록 업데이트
-                        }
-                    });
-                    listItem.appendChild(button);
-                    containerListElement.appendChild(listItem);
-                });
-            } else {
-                console.error('Failed to retrieve container list.');
-                }
-            } catch (error) {
-            console.error('An error occurred:', error);
-            }
-        }
-    
-        async function fetchContainerStats(containerId) {
-            try {
-                const response = await fetch(`/containers/${containerId}/stat`);
-                const stat_data = await response.json();
-
-                if (response.status === 200) {
-                    const cpuUsageTotal = stat_data.cpu_stats.cpu_usage.total_usage;
-                    const cpuUsageLimit = stat_data.cpu_stats.system_cpu_usage;
-                    const cpuUsagePer = (cpuUsageTotal / cpuUsageLimit * 100).toFixed(7);
-                    return { cpuUsagePer};
-                } else {
-                    console.error('Failed to fetch container stats');
-                }
-            } catch (error) {
-                console.error('An error occurred:', error);
-            }
-        }
-
-        async function deleteContainer(containerId) {
-            try {
-            const response = await fetch('/containers/delete', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ containerId }),
-            });
-    
-            const data = await response.json();
-            if (data.message) {
-                console.log(data.message);
-                return true;
-            } else if (data.error) {
-                console.error(data.error);
-            }
-            } catch (error) {
-            console.error('An error occurred:', error);
-            }
-            return false;
-        }
-    
-        fetchContainerList();
-        document.getElementById('deleted-container-count').textContent = deletedContainerCount;
-    </script>
+    <script type="text/javascript" src="/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whaling_docker Project</title>
-</head>
-<body>
-    Hello, Docker !!
-    <form action="/" method="post">
-        <label for="coinPair">CoinPair</label>
-        <input id="coinPair" type="text" name="coinPair" placeholder="BTCUSDT">
-        <button type="submit">Go</button>
-    </form>
-</body>
-</html> -->
