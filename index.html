@@ -97,11 +97,8 @@
 
                 if (response.status === 200) {
                     const cpuUsageTotal = stat_data.cpu_stats.cpu_usage.total_usage;
-                    <!-- const memoryUsageTotal = stat_data.memory_stats.usage; -->
                     const cpuUsageLimit = stat_data.cpu_stats.system_cpu_usage;
-                    <!-- const memoryUsageLimit = stat_data.memory_stats.stats.hierarchical_memory_limit; -->
                     const cpuUsagePer = (cpuUsageTotal / cpuUsageLimit * 100).toFixed(7);
-                    <!-- const memoryUsagePer = (memoryUsageTotal / memoryUsageLimit * 100).toFixed(7); -->
                     return { cpuUsagePer};
                 } else {
                     console.error('Failed to fetch container stats');
