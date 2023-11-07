@@ -57,6 +57,26 @@ app.post('/containers/delete', async (req, res) => {
   }
 });
 
+app.get('/containers/:containerId/stat', async (req, res) => {
+    const containerId = req.params.containerId;
+    try {
+        const response = await axios.get(`${dockerApiUrl}/containers/${containerId}/stats?stream=false`, {
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+        if (response.status === 200) {
+            const data = response.data;
+            res.json(data);
+        } else {
+            res.status(response.status).json({ error: 'Failed to fetch container stats' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+
 
 
 
