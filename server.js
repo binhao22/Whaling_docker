@@ -1,11 +1,12 @@
 const express = require('express')
 const axios = require('axios');
+var path = require('path')
 const app = express()
 app.use(express.json());
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.listen(8080, () => {
-    console.log('http://localhost:8080 에서 서버 실행중')
+app.listen(7979, () => {
+    console.log('http://localhost:7979 에서 서버 실행중')
 })
 
 app.get('/', (req, res) => {
