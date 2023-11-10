@@ -31,6 +31,7 @@ app.get('/containers', async (req, res) => {
     res.status(500).send('An error occurred');
   }
 });
+
 // /containers/delete POST 요청, Docker API 로 컨테이너 제거 요청
 app.post('/containers/delete', async (req, res) => {
   try {
