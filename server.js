@@ -2,7 +2,7 @@ const express = require('express')
 const axios = require('axios');
 var path = require('path')
 const app = express()
-app.use(express.json());
+app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(7979, () => {
