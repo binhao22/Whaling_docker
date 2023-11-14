@@ -37,8 +37,8 @@ app.post('/containers/delete', async (req, res) => {
   try {
     const containerId = req.body.containerId; // 클라이언트로부터 컨테이너 ID를 받음
     if (!containerId) {
-      res.status(400).json({ error: 'Missing containerId' });
-      return;
+      res.status(400).json({ error: 'Missing containerId' })
+      return
     }
 
     // Docker API를 사용하여 컨테이너 제거 요청
