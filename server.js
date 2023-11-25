@@ -60,7 +60,7 @@ app.post('/containers/delete', async (req, res) => {
   }
 });
 
-// 컨테이너 CPU 사용량 조회
+// 컨테이너 CPU 사용량 조회 func
 app.get('/containers/:containerId/stat', async (req, res) => {
     const containerId = req.params.containerId;
     try {
