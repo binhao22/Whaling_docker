@@ -1,6 +1,6 @@
 # Whaling_docker
 # 도커꺼줘 (고래잡이)
-# 2023.11.22 to
+# 2023.11.22 ing
 
 ![image](https://github.com/binhao22/Whaling_docker/assets/73528043/24a13920-8a8e-4258-95c3-86a0496963bf)  ![뜰채](https://github.com/binhao22/Whaling_docker/assets/73528043/bf5651fb-757d-4e90-b02b-2e0d8f78523d)
 &nbsp; 
