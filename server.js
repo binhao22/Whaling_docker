@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.listen(7979, () => {
-    console.log('http://localhost:7979 에서 서버 실행 중 ..')
+    console.log('http://localhost:7979 에서 서버 실행 중 ...')
 })
 
 app.get('/', (req, res) => {
