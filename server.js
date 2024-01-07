@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 // Docker API 엔드포인트:
 const dockerApiUrl = 'http://localhost:2375';
 
-// /containers GET 요청, Docker API 로부터 컨테이너 리스트를 반환
+// /containers GET 요청, Docker API 로부터 컨테이너 리스트를 반환.
 app.get('/containers', async (req, res) => {
   try {
     const response = await axios.get(`${dockerApiUrl}/containers/json?all=1`);
