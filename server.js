@@ -41,7 +41,7 @@ app.post('/containers/delete', async (req, res) => {
       return
     }
 
-    // Docker API를 사용하여 컨테이너 제거 요청
+    // Docker API를 사용하여 컨테이너 제거 요청.
     const response = await axios.delete(`${dockerApiUrl}/containers/${containerId}?force=1`, {
       headers: {
         'Content-Type': 'application/json',
