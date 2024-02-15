@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 })
 
-// Docker API 엔드포인
+// Docker API 엔드포인트
 const dockerApiUrl = 'http://localhost:2375';
 
 // /containers GET 요청, Docker API 로부터 컨테이너 리스트를 반환.
