@@ -1,7 +1,6 @@
 # Whaling_docker
 Docker API 를 활용한 컨테이너 관리 웹 애플리케이션
 
-
 도커꺼줘 (고래잡이) </br>
 Project Period : 2023.11.22 ~ 2023.11.27
 
